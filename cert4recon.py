@@ -5,6 +5,14 @@ import re
 import sys
 from sys import argv
 
+print('''
+ ______  ______  ______  _______ 4 ______   ______  ______  ______   ______  
+| |     | |     | |  | \   | |    | |  | \ | |     | |     / |  | \ | |  \ \ 
+| |     | |---- | |__| |   | |    | |__| | | |---- | |     | |  | | | |  | | 
+|_|____ |_|____ |_|  \_\   |_|    |_|  \_\ |_|____ |_|____ \_|__|_/ |_|  |_| 
+                                                            by S1rN3tZ
+''')
+
 class bcolors:
 	OK = '\033[92m'
 	WARNING = '\033[93m'
@@ -35,7 +43,8 @@ def main():
 	if len(sys.argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
 		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target.com [-o output file].")
-
+		sys.exit(0)
+		
 	elif '-t' in myargs:
 			url = url+myargs['-t']
 
