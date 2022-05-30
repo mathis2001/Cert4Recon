@@ -4,7 +4,6 @@ import requests
 import re
 import sys
 from sys import argv
-import argparse
 
 class bcolors:
 	OK = '\033[92m'
@@ -69,7 +68,7 @@ def main():
 			log.write(onlysub+"\n")
 		log.close()
 
-	if '-a' in myargs:
+	if '-a' in sys.argv:
 		print("\n Active HTTP(S) subdomains:\n")
 		for onlysub in NoDuplicates_list:
 			for proto in ["http://","https://"]:
