@@ -35,6 +35,7 @@ def main():
 	myargs = getopts(argv)
 	list=[]
 	NoDuplicates_list=[]
+	
 	url="https://crt.sh/?q="
 	
 	if len(sys.argv) < 2:
@@ -47,7 +48,7 @@ def main():
 	regex=r"^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][-_\.a-zA-Z0-9]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,13}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$"
 
 	r = requests.get(url)
-	jump = r.text.replace("<BR>","\n")
+	jump=r.text.replace("<BR>","\n")
 	nohtml=re.sub("<.*?>","",jump)
 	nohtml=nohtml.replace(" ","")
 	matches = re.finditer(regex, nohtml, re.MULTILINE)
@@ -60,13 +61,16 @@ def main():
 	for sub in list:
 		if sub not in NoDuplicates_list:
 			NoDuplicates_list.append(sub)
+	
+	print("Subdomains found with crt.sh:\n")
+	del NoDuplicates_list[0]
 
 	for onlysub in NoDuplicates_list:
-		print(onlysub)
-
+		print(bcolors.OK+"[+] "+bcolors.RESET+onlysub)
+	
 	if '-o' in myargs:
 		log = open(myargs['-o'], "w")
-		for onlysub in NoDuplicates_list:
+		for onlysub in NoDuplicates_list.remove("crt.shID"):
 			log.write(onlysub+"\n")
 		log.close()
 
