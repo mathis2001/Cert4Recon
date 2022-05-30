@@ -20,6 +20,19 @@ class bcolors:
 	RESET = '\033[0m'
 	INFO = '\033[94m'
 
+def help():
+	print('''
+  Options
+  -------------------------------------------
+
+	-h   help
+	-t   target
+	-o   output file
+	-a   check for alive subdomains
+
+  -------------------------------------------
+	''')
+
 def getopts(argv):
 	opts = {}  
 	while argv:
@@ -28,8 +41,9 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-                                print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target.com [-o output file] [-a]")
-                                sys.exit(0)
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target.com [-o output file] [-a]")
+				help()
+				sys.exit(0)
 		argv = argv[1:] 
 	return opts
 
