@@ -70,7 +70,7 @@ def main():
 	
 	if '-o' in myargs:
 		log = open(myargs['-o'], "w")
-		for onlysub in NoDuplicates_list.remove("crt.shID"):
+		for onlysub in NoDuplicates_list:
 			log.write(onlysub+"\n")
 		log.close()
 
