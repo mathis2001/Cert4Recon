@@ -13,22 +13,16 @@ class bcolors:
 	RESET = '\033[0m'
 	INFO = '\033[94m'
 
-def parser():
-	parser = argparse.ArgumentParser()
-	parser.add_argument("-t", action='store_true', help="target domain(exp: target.com)")
-	parser.add_argument("-a", action='store_true', help="Check for alive subdomains")
-	parser.add_argument("-o", action='store_true', help="Output file name")
-	args = parser.parse_args()
-	print(args)
-
 def getopts(argv):
 	opts = {}  
 	while argv:
-		if argv[0][0] == '-':
-			try:
-				opts[argv[0]] = argv[1]  
-			except Exception:
-				parser()
+		try:
+			if argv[0][0] == '-':
+				opts[argv[0]] = argv[1] 
+		except:
+			if argv[0] == '-h':
+                                print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target.com [-o output file] [-u up].")
+                                sys.exit(0)
 		argv = argv[1:] 
 	return opts
 
