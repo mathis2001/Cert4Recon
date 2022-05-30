@@ -11,6 +11,7 @@ class bcolors:
 	WARNING = '\033[93m'
 	FAIL = '\033[91m'
 	RESET = '\033[0m'
+	INFO = '\033[94m'
 
 def parser():
 	parser = argparse.ArgumentParser()
@@ -32,11 +33,13 @@ def getopts(argv):
 
 def main():
 	myargs = getopts(argv)
-
+	list=[]
+	NoDuplicates_list=[]
 	url="https://crt.sh/?q="
 	
 	if len(sys.argv) < 2:
 		print(bcolors.FAIL+"[!] "+bcolors.RESET+"No target given.")
+		print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target.com [-o output file].")
 
 	elif '-t' in myargs:
 			url = url+myargs['-t']
@@ -51,7 +54,21 @@ def main():
 	for matchNum, match in enumerate(matches):
 
 		result= "{match}".format(matchNum = matchNum, start = match.start(), end = match.end(), match = match.group())
-		print(result)
+		list.append(result)
+	
+	for sub in list:
+		if sub not in NoDuplicates_list:
+			NoDuplicates_list.append(sub)
+
+	for onlysub in NoDuplicates_list:
+		print(onlysub)
+
+	if '-o' in myargs:
+		log = open(myargs['-o'], "w")
+		for onlysub in NoDuplicates_list:
+			log.write(onlysub+"\n")
+		log.close()
+
 try:
 	main()
 except Exception as e:
