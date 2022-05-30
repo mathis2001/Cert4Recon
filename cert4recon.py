@@ -16,7 +16,7 @@ class bcolors:
 def parser():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-t", action='store_true', help="target domain(exp: target.com)")
-	parser.add_argument("-u", action='store_true', help="Check for up subdomains")
+	parser.add_argument("-a", action='store_true', help="Check for alive subdomains")
 	parser.add_argument("-o", action='store_true', help="Output file name")
 	args = parser.parse_args()
 	print(args)
@@ -75,7 +75,7 @@ def main():
 			log.write(onlysub+"\n")
 		log.close()
 
-	if '-u' in myargs:
+	if '-a' in myargs:
 		print("\n Active HTTP(S) subdomains:\n")
 		for onlysub in NoDuplicates_list:
 			for proto in ["http://","https://"]:
