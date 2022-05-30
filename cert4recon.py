@@ -16,6 +16,7 @@ class bcolors:
 def parser():
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-t", action='store_true', help="target domain(exp: target.com)")
+	parser.add_argument("-u", action='store_true', help="Check for up subdomains")
 	parser.add_argument("-o", action='store_true', help="Output file name")
 	args = parser.parse_args()
 	print(args)
@@ -74,12 +75,21 @@ def main():
 			log.write(onlysub+"\n")
 		log.close()
 
+	if '-u' in myargs:
+		for onlysub in NoDuplicates_list:
+			for proto in ["http://","https://"]:
+				try:
+					url=proto+onlysub
+					rq = requests.get(url)
+					print(bcolors.OK+"[+] "+bcolors.RESET+url+bcolors.INFO+" ==> "+bcolors.RESET+rq.url)
+				except:
+					pass
 try:
 	main()
 except Exception as e:
 	print(bcolors.FAIL+"[!] "+bcolors.RESET+"A problem has occured.")
 	print(bcolors.FAIL+"[!] "+bcolors.RESET+"No subdomain found.")
 	print(bcolors.INFO+"[*] "+bcolors.RESET+"Error info:")
-        print(e)
+	print(e)
 except KeyboardInterrupt:
         print(bcolors.FAIL+"[!] "+bcolors.RESET+"Script canceled.")
