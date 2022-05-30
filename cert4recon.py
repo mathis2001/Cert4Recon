@@ -79,5 +79,7 @@ try:
 except Exception as e:
 	print(bcolors.FAIL+"[!] "+bcolors.RESET+"A problem has occured.")
 	print(bcolors.FAIL+"[!] "+bcolors.RESET+"No subdomain found.")
+	print(bcolors.INFO+"[*] "+bcolors.RESET+"Error info:")
+        print(e)
 except KeyboardInterrupt:
         print(bcolors.FAIL+"[!] "+bcolors.RESET+"Script canceled.")
