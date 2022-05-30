@@ -15,6 +15,9 @@ $ ./cert4recon.py [-h] -t target.com [-o output file] [-a]
 
 Options:
 -h help
+
 -t target
+
 -o output file (exemple.txt)
+
 -a
