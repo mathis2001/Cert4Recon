@@ -76,6 +76,7 @@ def main():
 		log.close()
 
 	if '-u' in myargs:
+		print("\n Active HTTP(S) subdomains:\n")
 		for onlysub in NoDuplicates_list:
 			for proto in ["http://","https://"]:
 				try:
