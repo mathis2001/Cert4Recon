@@ -47,7 +47,8 @@ def main():
 	regex=r"^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][-_\.a-zA-Z0-9]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,13}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$"
 
 	r = requests.get(url)
-	nohtml=re.sub("<.*?>","",r.text)
+	jump = r.text.replace("<BR>","\n")
+	nohtml=re.sub("<.*?>","",jump)
 	nohtml=nohtml.replace(" ","")
 	matches = re.finditer(regex, nohtml, re.MULTILINE)
 
