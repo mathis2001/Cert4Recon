@@ -48,7 +48,7 @@ def main():
 	nohtml=nohtml.replace(" ","")
 	matches = re.finditer(regex, nohtml, re.MULTILINE)
 
-	for matchNum, match in enumerate(matches, start=1):
+	for matchNum, match in enumerate(matches):
 
 		result= "{match}".format(matchNum = matchNum, start = match.start(), end = match.end(), match = match.group())
 		print(result)
