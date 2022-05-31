@@ -1,7 +1,7 @@
 # Cert4Recon
 Simple Python Recon tool to find subdomains with crt.sh
 
-Install:
+<h1>Install:</h1>
 
 $ git clone https://github.com/mathis2001/Cert4Recon.git
 
@@ -9,7 +9,7 @@ $ cd Cert4Recon
 
 $ python3 cert4recon.py
 
-Usage:
+<h1>Usage:</h1>
 
 $ ./cert4recon.py [-h] -t target.com [-o output file] [-a]
 
