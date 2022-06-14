@@ -99,6 +99,9 @@ def main():
 					url=proto+onlysub
 					rq = requests.get(url)
 					print(bcolors.OK+"[+] "+bcolors.RESET+url+bcolors.INFO+" ==> "+bcolors.RESET+rq.url)
+				except KeyboardInterrupt:
+					print(bcolors.FAIL+"[!] "+bcolors.RESET+"Script canceled.")
+					exit(0)
 				except:
 					pass
 try:
