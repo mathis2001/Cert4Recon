@@ -41,7 +41,7 @@ def getopts(argv):
 				opts[argv[0]] = argv[1] 
 		except:
 			if argv[0] == '-h':
-				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target.com [-o output file] [-a]")
+				print(bcolors.INFO+"[*] "+bcolors.RESET+"usage: ./cert4recon.py [-h] -t target [-o output file] [-a]")
 				help()
 				sys.exit(0)
 		argv = argv[1:] 
