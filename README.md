@@ -11,7 +11,7 @@ $ python3 cert4recon.py
 ```
 ## Usage:
 ```bash
-$ ./cert4recon.py [-h] -t target.com [-o output file] [-a]
+$ ./cert4recon.py [-h] -t target [-o output file] [-a]
 ```
 ## Options:
 ```bash
